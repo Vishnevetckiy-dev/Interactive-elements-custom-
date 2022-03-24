@@ -1,0 +1,326 @@
+@font-face {
+    font-family: 'OpenSans';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+    src: local('OpenSansRegular'), local('OpenSans-Regular'),
+     url(../fonts/OpenSans-Regular.woff2) format('woff2'),
+     url(../fonts/OpenSans-Regular.woff) format('woff');
+  }
+
+  @font-face {
+    font-family: 'OpenSans';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 600;
+    src: local('OpenSansSemiBold'), local('OpenSans-SemiBold'),
+     url(../fonts/OpenSans-SemiBold.woff2) format('woff2'),
+     url(../fonts/OpenSans-SemiBold.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Roboto';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 400;
+    src: local('RobotoRegular'), local('Roboto-Regular'),
+     url(../fonts/Roboto-Regular.woff2) format('woff2'),
+     url(../fonts/Roboto-Regular.woff) format('woff');
+  }
+
+  body {
+    margin: 0 auto;
+  }
+  
+  .container {
+    width: 2550px;
+    margin: 0 auto;
+    padding: 70px 36px 110px 92px;
+    background-color: #424242;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .checkbox__container {
+      width: 117px;
+      height: 269px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      padding: 11px 29px 29px 30px;
+    }
+
+  .checkbox__heading {
+      font-family: 'OpenSans';
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 24px;
+  }
+
+  .checkbox {
+    opacity: 0;
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+  }
+  
+  #checkbox {
+    display: none;
+  }
+  
+  .checkbox-text {
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+    display: inline-block;
+    color: #333333;
+    padding-left: 24px;
+    font-family: 'OpenSans';
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  
+  .checkbox-text::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #333333;
+    border-radius: 3px;
+  }
+  
+  .checkbox-text::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    width: 7px;
+    height: 7px;
+    opacity: 0;
+    background-image: url('../img/Checkbox.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .checkbox:checked+.checkbox-text::after {
+    opacity: 1;
+  }
+
+  .checkbox:checked+.checkbox-text::before {
+    border: 1px solid #CCB26E;
+  }
+
+  /*Select*/
+  
+  .choices {
+    width: 176px;
+    height: 100%;
+    margin: 0;
+  }
+
+  .choices.is-open {
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .is-focused .choices__inner, .is-open .choices__inner {
+    border: 1px solid #CCB26E;
+  }
+
+  .choices[data-type*=select-one]:after {
+    height: 8px;
+    width: 8px;
+    z-index: 3;
+    top: 16px;
+    border: 1px solid #CCB26E;
+    border-width: 0 0 1px 1px;
+    transform: rotate(-45deg);
+  }
+
+  .choices__list--single .choices__item {
+    width: 176px;
+  }
+
+  .choices[data-type*=select-one].is-open:after {
+    top: 25px;
+    border: 1px solid #CCB26E;
+    border-width: 1px 1px 0 0;
+  }
+
+  .choices__inner {
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 2;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .choices[data-type*=select-one] .choices__inner {
+    padding-bottom: 0;
+  }
+
+  .is-open .choices__inner {
+    border-radius: 10px;
+  }
+
+  .choices__placeholder {
+    opacity: 1;
+  }
+
+  .choices__list--dropdown .choices__placeholder {
+    display: none;
+  }
+
+  .choices__list--dropdown { /*костыль*/
+    padding-top: 30px;
+    top: calc(100% - 30px);
+  }
+
+  .choices__list--dropdown .choices__item--selectable {
+    padding-right: 10px;
+    padding-left: 15px;
+  }
+
+  .choices__list--dropdown.is-active {
+    border: 1px solid #CCB26E;
+    border-top-width: 0;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .choices__item {
+    padding: 9px 0 11px 15px;
+  }
+
+  .is-flipped .choices__list--dropdown {
+  bottom: 30px;
+  }
+
+  /*Map*/
+  [class*="-ground-pane"] {
+    filter: grayscale(1);
+  }
+  
+  /*Scrollbar*/
+  .customscroll {
+    width: 340px;
+    height: 270px;
+    background-color: #ffffff;
+    font-family: 'OpenSans';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    padding: 20px 30px 20px 29px;
+  }
+
+  .simplebar-content-wrapper {
+    overflow: scroll;
+  }
+
+  .simplebar-scrollbar {
+    height: 100%;
+    transform: translate3d(0px, 130px, 0px);
+    background-color: #CCB26E;
+    border-radius: 5px;
+    margin-top: 7px;
+    margin-right: 6px;
+    width: 6px;
+  }
+
+  .simplebar-scrollbar::before {
+    background-color: #CCB26E;
+    border-radius: 5px;
+    height: 100%;
+  }
+
+  /*Form*/
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 21px 30px;
+    width: 380px;
+    height: 368px;
+    background-color: #000000;
+    border-radius: 10px;
+  }
+
+  .form__item {
+    width: 358px;
+    padding: 20px 0 21px 20px;
+    border: 1px solid #FF5C00;
+    border-radius: 10px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  .input__error {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .form__button {
+    width: 192px;
+    height: 60px;
+    background: #FF5C00;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+  }
+
+  .form__item {
+    position: relative;
+  }
+
+  .js-validate-error-label {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #FF5C00!important
+  }
+  
+  /*Tooltip*/
+  .tooltip__container {
+    width: 268px;
+    height: 120px;
+    padding: 20px 78px 20px 29px;
+    background-color: #ffffff;
+    position: relative;
+  }
+
+  .tooltip__button {
+    position: absolute;
+    right: 103px;
+    bottom: 26px;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background-image: url(../img/tooltip__icon-1.svg);
+    background-color: transparent;
+  }
+
+  .tooltip__button:hover,
+  .tooltip__button:focus {
+    background-image: url(../img/tooltip__icon-active.svg);
+    transition: background-image .3s ease-in-out;
+  }
+
+  .tooltipe__text-1 {
+    font-family: 'OpenSans';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    width: 268px;
+  }
